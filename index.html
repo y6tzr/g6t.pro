@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>G6T</title>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Quicksand', sans-serif;
+    }
+
+    .entry-screen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 10;
+      width: 100%;
+      height: 100%;
+      background: #ffe6f0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      transition: opacity 0.5s ease;
+    }
+
+    .hello-kitty-img {
+      width: 200px;
+      transition: transform 0.3s ease;
+      cursor: pointer;
+    }
+
+    .hello-kitty-img.jump {
+      animation: jump 0.5s ease;
+    }
+
+    .enter-text {
+      margin-top: 20px;
+      font-size: 28px;
+      color: #ff66a3;
+      font-family: 'Pacifico', cursive;
+    }
+
+    @keyframes jump {
+      0% { transform: translateY(0); }
+      30% { transform: translateY(-80px); }
+      60% { transform: translateY(0); }
+      100% { transform: scale(1.05); }
+    }
+
+    .main-content {
+      display: none;
+      height: 100vh;
+      background: url('https://wallpapercat.com/w/full/3/f/4/299876-1920x1200-desktop-hd-hello-kitty-background-photo.jpg') no-repeat center center fixed;
+      background-size: cover;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .container {
+      display: flex;
+      gap: 60px;
+      padding: 30px;
+      border-radius: 20px;
+    }
+
+    .profile {
+      background: #fffafb;
+      border: 3px solid #ffb6d5;
+      border-radius: 25px;
+      padding: 25px;
+      width: 220px;
+      text-align: center;
+      position: relative;
+      box-shadow: 0 5px 15px rgba(255, 105, 180, 0.2);
+    }
+
+    .profile::before {
+      content: "🎀";
+      position: absolute;
+      top: -20px;
+      left: calc(50% - 15px);
+      font-size: 30px;
+    }
+
+    .profile img {
+      width: 120px;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 4px solid #ffcce6;
+      margin-bottom: 10px;
+    }
+
+    .profile h2 {
+      font-family: 'Pacifico', cursive;
+      font-size: 24px;
+      margin: 10px 0 5px;
+    }
+
+    .profile p {
+      font-size: 16px;
+      margin: 5px 0;
+    }
+
+    a {
+      color: #ff5c8a;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="entry-screen" id="entryScreen">
+    <img 
+      src="https://i.pinimg.com/originals/f8/2f/6d/f82f6d8e11c243cd4a867657d1416a87.gif" 
+      alt="Hello Kitty Jumping" 
+      class="hello-kitty-img" 
+      id="kittyImg">
+    <div class="enter-text">Click Me! 🎀</div>
+    <audio id="bgMusic" src="one.mp3" preload="auto"></audio>
+  </div>
+
+  <div class="main-content" id="mainContent">
+    <div class="container">
+      <div class="profile">
+        <img src="https://i.pinimg.com/736x/05/6f/24/056f244f7bb07de712c7fca1b8d5de01.jpg" alt="Hello Kitty 1">
+        <h2>Y6T</h2>
+        <p></p>
+        <p><a href="#"></a><br><a href="#"></a></p>
+      </div>
+
+      <div class="profile">
+        <img src="https://i.pinimg.com/736x/d2/3c/1d/d23c1d90c244c044281350a51d479584.jpg" alt="Hello Kitty 2">
+        <h2>GIA</h2>
+        <p></p>
+        <p><a href="#"></a><br><a href="#"></a></p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const kittyImg = document.getElementById('kittyImg');
+    const entryScreen = document.getElementById('entryScreen');
+    const mainContent = document.getElementById('mainContent');
+    const bgMusic = document.getElementById('bgMusic');
+
+    kittyImg.addEventListener('click', () => {
+      kittyImg.classList.add('jump');
+      bgMusic.play();
+
+      setTimeout(() => {
+        entryScreen.style.opacity = 0;
+        setTimeout(() => {
+          entryScreen.style.display = 'none';
+          mainContent.style.display = 'flex';
+        }, 500);
+      }, 500);
+    });
+  </script>
+</body>
+</html>
